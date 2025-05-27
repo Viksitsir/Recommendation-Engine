@@ -16,6 +16,9 @@ if not os.path.exists('movie_list.pkl'):
     download_file_from_gdrive(MOVIE_LIST_ID, 'movie_list.pkl')
 if not os.path.exists('similarity.pkl'):
     download_file_from_gdrive(SIMILARITY_ID, 'similarity.pkl')
+    
+movie_opened = pickle.load(open('movie_list.pkl', 'rb'))
+similarity = pickle.load(open('similarity.pkl', 'rb'))
 
 st.header("Movie recommender")
 movie_names = movie_opened['title'].values
