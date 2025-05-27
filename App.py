@@ -1,10 +1,21 @@
 ## RUN THE JUPYTER NOTEBOOK BEFORE RUNNING THIS FILE
-
 import streamlit as st
-import pickle 
+import pickle
+import os
 
-movie_opened = pickle.load(open('movie_list.pkl', 'rb'))
-similarity = pickle.load(open('similarity.pkl', 'rb'))
+def download_file_from_gdrive(file_id, dest_path):
+    import gdown
+    url = f"{file_id}"
+    gdown.download(url, dest_path, quiet=False)
+
+# IDs from Google Drive share links
+MOVIE_LIST_ID = "https://drive.google.com/file/d/11gmdoQtnJC4dg_Fx8NvdP7foGRun7gLX/view?usp=drive_link"
+SIMILARITY_ID = "https://drive.google.com/file/d/1GhlJFtSVQ-5TlTnNQ7FN-t9Bjou1xVOv/view?usp=drive_link"
+
+if not os.path.exists('movie_list.pkl'):
+    download_file_from_gdrive(MOVIE_LIST_ID, 'movie_list.pkl')
+if not os.path.exists('similarity.pkl'):
+    download_file_from_gdrive(SIMILARITY_ID, 'similarity.pkl')
 
 st.header("Movie recommender")
 movie_names = movie_opened['title'].values
