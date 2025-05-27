@@ -1,3 +1,5 @@
+## RUN THE JUPYTER NOTEBOOK BEFORE RUNNING THIS FILE
+
 import streamlit as st
 import pickle 
 
