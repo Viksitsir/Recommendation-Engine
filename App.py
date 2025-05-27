@@ -2,20 +2,6 @@
 import streamlit as st
 import pickle
 import os
-import gdown
-def download_file_from_gdrive(file_id, dest_path):
-    import gdown
-    url = f"{file_id}"
-    gdown.download(url, dest_path, quiet=False)
-
-# Use only the file IDs below (not the full share links)
-MOVIE_LIST_ID = "https://drive.google.com/file/d/11gmdoQtnJC4dg_Fx8NvdP7foGRun7gLX/view?usp=sharing"
-SIMILARITY_ID = "https://drive.google.com/file/d/1GhlJFtSVQ-5TlTnNQ7FN-t9Bjou1xVOv/view?usp=sharing"
-
-if not os.path.exists('movie_list.pkl'):
-    download_file_from_gdrive(MOVIE_LIST_ID, 'movie_list.pkl')
-if not os.path.exists('similarity.pkl'):
-    download_file_from_gdrive(SIMILARITY_ID, 'similarity.pkl')
     
 movie_opened = pickle.load(open('movie_list.pkl', 'rb'))
 similarity = pickle.load(open('similarity.pkl', 'rb'))
