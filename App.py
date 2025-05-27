@@ -2,9 +2,8 @@
 import streamlit as st
 import pickle
 import os
-
+import gdown
 def download_file_from_gdrive(file_id, dest_path):
-    import gdown
     url = f"{file_id}"
     gdown.download(url, dest_path, quiet=False)
 
